@@ -27,7 +27,7 @@ css/estilos.css   Estilos de la interfaz (incluye modo claro y oscuro del panel)
 js/app.js         Catálogo de productos, carrito, panel y toda la escena 3D
 ```
 
-Los logos de DonWeb y de NVIDIA van incrustados dentro de `index.html` y `js/app.js`. Así la página funciona igual con doble clic que publicada en un servidor.
+Todos los logos van incrustados dentro de `index.html` y `js/app.js`: el de DonWeb, el de NVIDIA en la puerta del rack de GPU y los de Laravel, n8n, Node.js y Docker en la puerta del rack de Cloud. Así la página funciona igual con doble clic que publicada en un servidor.
 
 ## Controles
 
@@ -53,7 +53,7 @@ Después de abrir el rack, la URL se limpia, así que al refrescar la página si
 - [ ] **Códigos de producto.** El campo `codigo` de cada plan (por ejemplo `wp-full`) es provisorio. Hay que reemplazarlo por el código real de cada producto.
 - [ ] **Precios.** Son los publicados en donweb.com/es-ar a fines de noviembre de 2026, en pesos argentinos con IVA. Lo ideal es cargarlos desde la misma fuente de precios del sitio en lugar de dejarlos fijos en el código.
 - [ ] **Cloud Server.** Los planes *Cloud Apps* y *Cloud Producción* muestran `[precio]` porque el precio por configuración no está publicado. También hay que confirmar que el "desde $5.165" corresponde a la configuración de 1 vCPU y 1 GB.
-- [ ] **Logo de NVIDIA.** Usarlo en la página requiere autorización de NVIDIA, por ejemplo mediante su programa de partners.
+- [ ] **Logos de terceros.** Usar los logos de NVIDIA, Laravel, n8n, Node.js y Docker requiere autorización de cada marca o respetar sus normas de uso de marca.
 - [ ] **three.js.** Se carga desde jsDelivr con la versión fija 0.147.0. Si la política del sitio pide no depender de CDNs externos, descargá `three.min.js` de esa versión y cambiá la ruta en `index.html`.
 
 ## Cómo cambiar o agregar productos

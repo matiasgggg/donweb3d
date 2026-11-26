@@ -106,7 +106,8 @@ body.panel-open .intro,body.explorando .intro{opacity:0;transform:translateY(8px
 .rack-nav > *{pointer-events:auto}
 .hint{margin:0;font-size:13.5px;color:var(--scene-ink-2);transition:opacity .4s}
 .hint.is-gone{opacity:0}
-.hint .h-touch{display:none}
+/* En escritorio no se muestra texto de ayuda */
+@media (min-width:720px){.hint{display:none}}
 .rack-row{display:flex;gap:8px;flex-wrap:wrap}
 body.panel-open .dock{right:min(460px,100%)}
 .rack-btn{
@@ -251,7 +252,6 @@ body.ready .rack-nav{opacity:1;transition:opacity .7s ease}
   .intro h1{font-size:27px;margin-bottom:6px}
   .intro p{font-size:14.5px;max-width:34ch}
   .rack-nav{align-items:stretch}
-  .hint .h-mouse{display:none}
   .hint .h-touch{display:inline}
   .rack-row{
     flex-wrap:nowrap;gap:6px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;
