@@ -84,11 +84,12 @@
         { codigo: 'cloud-inicial', nombre: 'Cloud Inicial', desde: true, lista: 8034, precioMes: 5165,
           pitch: 'Para una instalación mínima de Linux y primeras pruebas.',
           specs: ['1 vCPU y 1 GB de RAM'] },
-        // Precio pendiente: completar con la tabla de precios de Cloud.
-        { codigo: 'cloud-apps', nombre: 'Cloud Apps', precioMes: null,
+        // PRECIO DE EJEMPLO para la demo: reemplazar por el real de la tabla de precios de Cloud.
+        { codigo: 'cloud-apps', nombre: 'Cloud Apps', desde: true, precioMes: 14900,
           pitch: 'Para paneles como Ferozo, cPanel o CloudPanel y apps como WordPress, Odoo o n8n.',
           specs: ['2 vCPU y 4 GB de RAM'] },
-        { codigo: 'cloud-produccion', nombre: 'Cloud Producción', precioMes: null,
+        // PRECIO DE EJEMPLO para la demo: reemplazar por el real de la tabla de precios de Cloud.
+        { codigo: 'cloud-produccion', nombre: 'Cloud Producción', desde: true, precioMes: 27900,
           pitch: 'Para varias aplicaciones en producción, Windows o tráfico sostenido.',
           specs: ['4 vCPU y 8 GB de RAM'] }
       ]
@@ -368,6 +369,22 @@
     openRack(b.dataset.rack, b);
   }));
   document.getElementById('closePanel').addEventListener('click', closePanel);
+
+  /* Logo de DonWeb: vuelve al estado inicial de la página (sin recargar ni salir del sitio) */
+  function volverAlInicio() {
+    if (state.open || state.pending) closePanel();
+    state.hover = null;
+    state.navHover = null;
+    linkCard(null);
+    // Planes y períodos vuelven a su selección inicial (el carrito se conserva)
+    RACKS.forEach((r) => { state.sel[r.id] = r.planInicial; state.periodo[r.id] = r.periodoInicial || r.periodoFijo || 1; });
+    state.added = null;
+    document.body.classList.remove('explorando');
+    hint.classList.remove('is-gone');
+    clearHash();
+    if (scene3d) scene3d.inicio();
+  }
+  document.getElementById('brandHome').addEventListener('click', volverAlInicio);
 
   /* Tarjetas de abajo y racks se destacan entre sí: el cursor sobre una tarjeta ilumina su rack,
      y el cursor sobre un rack destaca su tarjeta. */
@@ -1364,7 +1381,9 @@
 
     return {
       focusRack: (id) => { focusRack(id); startTween(1.6); },
-      overview: (id) => { overview(id); startTween(1.4); }
+      overview: (id) => { overview(id); startTween(1.4); },
+      // Vuelve a la vista de la entrada del pasillo, con un viaje suave de cámara
+      inicio: () => { keys.clear(); eye.x = 0; eye.z = null; overview(null); startTween(1.6); }
     };
   }
 

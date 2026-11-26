@@ -38,6 +38,7 @@ Todos los logos van incrustados dentro de `index.html` y `js/app.js`: el de DonW
 | Ir más rápido | Mantener Shift | — |
 | Ver los planes de un producto | Clic en el rack o en su tarjeta de abajo | Tocar el rack o su tarjeta |
 | Cerrar el panel | Esc, la X o cualquier tecla de movimiento | La X |
+| Volver al inicio | Clic en el logo de DonWeb | Tocar el logo de DonWeb |
 
 ## Links directos
 
@@ -52,7 +53,7 @@ Después de abrir el rack, la URL se limpia, así que al refrescar la página si
 - [ ] **Conectar el carrito real.** La función `agregarAlCarrito()` en `js/app.js` es un prototipo que lleva a `https://donweb.com/es-ar/mis-compras`. Hay que reemplazarla por la misma llamada que usan los botones "Continuar" / "Agregar al carro" del sitio.
 - [ ] **Códigos de producto.** El campo `codigo` de cada plan (por ejemplo `wp-full`) es provisorio. Hay que reemplazarlo por el código real de cada producto.
 - [ ] **Precios.** Son los publicados en donweb.com/es-ar a fines de noviembre de 2026, en pesos argentinos con IVA. Lo ideal es cargarlos desde la misma fuente de precios del sitio en lugar de dejarlos fijos en el código.
-- [ ] **Cloud Server.** Los planes *Cloud Apps* y *Cloud Producción* muestran `[precio]` porque el precio por configuración no está publicado. También hay que confirmar que el "desde $5.165" corresponde a la configuración de 1 vCPU y 1 GB.
+- [ ] **Cloud Server.** Los planes *Cloud Apps* (desde $14.900) y *Cloud Producción* (desde $27.900) tienen precios de ejemplo para la demo, marcados con un comentario en `js/app.js`. Hay que reemplazarlos por los reales y confirmar que el "desde $5.165" corresponde a la configuración de 1 vCPU y 1 GB.
 - [ ] **Logos de terceros.** Usar los logos de NVIDIA, Laravel, n8n, Node.js y Docker requiere autorización de cada marca o respetar sus normas de uso de marca.
 - [ ] **three.js.** Se carga desde jsDelivr con la versión fija 0.147.0. Si la política del sitio pide no depender de CDNs externos, descargá `three.min.js` de esa versión y cambiá la ruta en `index.html`.
 

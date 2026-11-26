@@ -79,7 +79,7 @@ body.explorando .scrim::after,body.panel-open .scrim::after{opacity:0}
   padding:calc(env(safe-area-inset-top,0px) + 14px) 20px 0;pointer-events:none;
 }
 .topbar > *{pointer-events:auto}
-.brand{display:inline-flex;align-items:center;min-height:44px;line-height:0;border-radius:8px}
+.brand{display:inline-flex;align-items:center;min-height:44px;line-height:0;border-radius:8px;appearance:none;background:none;border:0;padding:0;cursor:pointer}
 .brand img{display:block;height:38px;width:auto}
 .cart-pill{
   display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;
