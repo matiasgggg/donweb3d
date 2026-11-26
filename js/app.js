@@ -1163,7 +1163,7 @@
           // La espera empieza cuando la cámara prácticamente llegó (el tramo final de la curva es casi quieto)
           const arrived = !rig.tween || rig.tween.t >= 0.85;
           if (arrived) q.wait = reduced ? DOOR_HOLD : Math.min(DOOR_HOLD, (q.wait || 0) + dt);
-          if (q.wait >= DOOR_HOLD) q.open = reduced ? 1 : Math.min(1, q.open + dt / 1.5);
+          if (q.wait >= DOOR_HOLD) q.open = reduced ? 1 : Math.min(1, q.open + dt / 1.8);
         } else {
           q.wait = 0;
           q.open = reduced ? 0 : Math.max(0, q.open - dt / 1.0);
