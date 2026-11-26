@@ -1272,7 +1272,14 @@
       if (!drag || e.pointerId !== drag.id) return;
       const moved = drag.moved; drag = null;
       if (moved) settleYaw();
-      if (!moved) { const id = pick(e.clientX, e.clientY); if (id) openRack(id); }
+      if (!moved) {
+        const id = pick(e.clientX, e.clientY);
+        // Con el panel abierto, un clic fuera de él (en el vacío o en el mismo rack) cierra igual que la X;
+        // un clic en otro rack lo abre directamente
+        if (id && id !== state.active) openRack(id);
+        else if (state.open || state.pending) closePanel();
+        else if (id) openRack(id);
+      }
     });
     canvas.addEventListener('pointercancel', () => { if (drag && drag.moved) settleYaw(); drag = null; });
     canvas.addEventListener('pointerleave', () => { state.hover = null; linkCard(null); });
