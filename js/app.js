@@ -21,21 +21,7 @@
 
   const RACKS = [
     {
-      id: 'sitiosimple', nombre: 'SitioSimple', side: 1, slot: 2, tipo: 'site',
-      bajada: 'Tu página o tienda online creada con IA en segundos, con hosting, dominio y correos incluidos. Puedes probarla gratis 15 días, sin tarjeta.',
-      periodos: null, periodoFijo: 12, planInicial: 'ss-tienda',
-      comunes: ['Constructor con IA y editor arrastra y suelta', 'Hosting y certificado SSL incluidos', 'Dominio gratis por 1 año', 'Email marketing y blog incluidos', 'Optimizado para SEO y en varios idiomas', 'Soporte 24/7 y acompañamiento personalizado'],
-      planes: [
-        { codigo: 'ss-pagina', nombre: 'Página Web', precioMes: 3800,
-          pitch: 'Ideal para que tu negocio o proyecto tenga presencia online.',
-          specs: ['10 cuentas de correo con 30 GB', 'Integración con redes sociales'] },
-        { codigo: 'ss-tienda', nombre: 'Página Web + Tienda', tag: 'Más elegido', precioMes: 3900,
-          pitch: 'Vende tus productos y aumenta tus ganancias, sin comisión por ventas.',
-          specs: ['Catálogo de productos, stock y pedidos', 'Medios de pago y de envío', 'Cupones y promociones', 'Múltiples monedas', '20 cuentas de correo con 100 GB'] }
-      ]
-    },
-    {
-      id: 'webhosting', nombre: 'Web Hosting', side: -1, slot: 4, tipo: 'web',
+      id: 'webhosting', nombre: 'Web Hosting', side: 1, slot: 2, tipo: 'web',
       bajada: 'Alojamiento con discos NVMe y panel Ferozo, con dominio, SSL, correos y migración gratuita.',
       periodos: [1, 12, 24, 48], periodoInicial: 12, planInicial: 'wh-full',
       comunes: ['Panel de control Ferozo', 'Transferencia sin medición', 'Protección DDoS y firewall de aplicaciones', 'Migración gratuita'],
@@ -55,7 +41,7 @@
       ]
     },
     {
-      id: 'wordpress', nombre: 'WordPress Hosting', side: 1, slot: 7, tipo: 'wp',
+      id: 'wordpress', nombre: 'WordPress Hosting', side: -1, slot: 4, tipo: 'wp',
       bajada: 'WordPress preinstalado sobre servidores LiteSpeed, con SSL, migración asistida y soporte 24/7.',
       periodos: [1, 12, 24, 48], periodoInicial: 12, planInicial: 'wp-full',
       planes: [
@@ -71,6 +57,20 @@
           precios: { 1: 13900, 12: 5900, 24: 5700, 48: 5500 },
           pitch: 'Potencia y seguridad máxima: lanza tu proyecto con ayuda de la IA y prueba cambios antes de publicarlos.',
           caracteristicas: ['100 GB de almacenamiento NVMe', 'Dominio gratis contratando 12 meses o más', '50 cuentas de correo', 'Backups diarios de 25 GB', 'WordPress Stage para probar cambios', 'Asistente IA para WordPress'] }
+      ]
+    },
+    {
+      id: 'sitiosimple', nombre: 'SitioSimple', side: 1, slot: 7, tipo: 'site',
+      bajada: 'Tu página o tienda online creada con IA en segundos, con hosting, dominio y correos incluidos. Puedes probarla gratis 15 días, sin tarjeta.',
+      periodos: null, periodoFijo: 12, planInicial: 'ss-tienda',
+      comunes: ['Constructor con IA y editor arrastra y suelta', 'Hosting y certificado SSL incluidos', 'Dominio gratis por 1 año', 'Email marketing y blog incluidos', 'Optimizado para SEO y en varios idiomas', 'Soporte 24/7 y acompañamiento personalizado'],
+      planes: [
+        { codigo: 'ss-pagina', nombre: 'Página Web', precioMes: 3800,
+          pitch: 'Ideal para que tu negocio o proyecto tenga presencia online.',
+          specs: ['10 cuentas de correo con 30 GB', 'Integración con redes sociales'] },
+        { codigo: 'ss-tienda', nombre: 'Página Web + Tienda', tag: 'Más elegido', precioMes: 3900,
+          pitch: 'Vende tus productos y aumenta tus ganancias, sin comisión por ventas.',
+          specs: ['Catálogo de productos, stock y pedidos', 'Medios de pago y de envío', 'Cupones y promociones', 'Múltiples monedas', '20 cuentas de correo con 100 GB'] }
       ]
     },
     {

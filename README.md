@@ -4,9 +4,9 @@ Landing interactiva en 3D donde el visitante recorre el pasillo de un data cente
 
 Productos incluidos, en el orden del pasillo (cuanto más adentro, más potencia):
 
-1. SitioSimple
-2. Web Hosting
-3. WordPress Hosting
+1. Web Hosting
+2. WordPress Hosting
+3. SitioSimple
 4. Cloud Server
 5. Servidor Dedicado
 6. Servidor GPU para IA
@@ -44,7 +44,7 @@ Todos los logos van incrustados dentro de `index.html` y `js/app.js`: el de DonW
 
 Cada producto se puede abrir directamente desde un link, útil para campañas:
 
-`index.html#sitiosimple` · `#webhosting` · `#wordpress` · `#cloud` · `#dedicados` · `#gpu`
+`index.html#webhosting` · `#wordpress` · `#sitiosimple` · `#cloud` · `#dedicados` · `#gpu`
 
 Después de abrir el rack, la URL se limpia, así que al refrescar la página siempre se empieza desde el pasillo.
 
