@@ -1148,7 +1148,7 @@
     }
 
     // Con la cámara ya frente al rack, la puerta queda cerrada un momento para que se lea su pantalla
-    const DOOR_HOLD = 0.53;
+    const DOOR_HOLD = 0.67;
     function stepRacks(dt) {
       const k = reduced ? 1 : 1 - Math.exp(-dt * 6);
       const tnow = performance.now() / 1000;
@@ -1163,7 +1163,7 @@
           // La espera empieza cuando la cámara prácticamente llegó (el tramo final de la curva es casi quieto)
           const arrived = !rig.tween || rig.tween.t >= 0.85;
           if (arrived) q.wait = reduced ? DOOR_HOLD : Math.min(DOOR_HOLD, (q.wait || 0) + dt);
-          if (q.wait >= DOOR_HOLD) q.open = reduced ? 1 : Math.min(1, q.open + dt / 1.2);
+          if (q.wait >= DOOR_HOLD) q.open = reduced ? 1 : Math.min(1, q.open + dt / 1.5);
         } else {
           q.wait = 0;
           q.open = reduced ? 0 : Math.max(0, q.open - dt / 1.0);
@@ -1391,7 +1391,7 @@
     requestAnimationFrame(frame);
 
     return {
-      focusRack: (id) => { focusRack(id); startTween(1.07); },
+      focusRack: (id) => { focusRack(id); startTween(1.33); },
       overview: (id) => { overview(id); startTween(1.4); },
       // Vuelve a la vista de la entrada del pasillo, con un viaje suave de cámara
       inicio: () => { keys.clear(); eye.x = 0; eye.z = null; overview(null); startTween(1.6); }
