@@ -680,7 +680,7 @@
         box(s, 0.066, 0.012, 0.006, x, h / 2 - 0.045, 0.423, M.gpuGreen);
         box(s, 0.046, 0.046, 0.004, x, 0.03, 0.422, M.fan);
         box(s, 0.046, 0.046, 0.004, x, -0.05, 0.422, M.fan);
-        led(s, x + 0.022, -h / 2 + 0.03, 0.423, leds, k % 3 === 0 ? M.ledCyan : M.ledGreen);
+        led(s, x + 0.022, -h / 2 + 0.045, 0.423, leds, k % 3 === 0 ? M.ledCyan : M.ledGreen);
       }
       box(s, 0.012, h * 0.7, 0.02, -(IW / 2 - 0.005), 0, 0.408, M.handle);
       box(s, 0.012, h * 0.7, 0.02, IW / 2 - 0.005, 0, 0.408, M.handle);
@@ -709,8 +709,9 @@
       const n = Math.floor((IW - 0.1) / 0.04), x0 = -((n - 1) * 0.04) / 2;
       for (let k = 0; k < n; k++) {
         const x = x0 + k * 0.04;
-        box(s, 0.028, 0.02, 0.006, x, -0.012, 0.394, M.bay);
-        led(s, x, 0.022, 0.398, leds, k % 6 === 4 ? M.ledAmber : M.ledGreen);
+        // Fila de puertos arriba y su luz debajo, dentro del frente del switch
+        box(s, 0.028, 0.02, 0.006, x, 0.008, 0.394, M.bay);
+        led(s, x, -0.018, 0.398, leds, k % 6 === 4 ? M.ledAmber : M.ledGreen);
       }
       s.userData = { base: -0.02, amt: 0.04, delay: 0.3 };
       return s;
@@ -750,9 +751,10 @@
       box(s, 0.5, u, 0.6, 0, 0, 0.09, M.face);
       for (let k = 0; k < 12; k++) {
         const x = -0.2 + k * 0.034;
-        box(s, 0.024, 0.02, 0.006, x, -0.012, 0.394, M.bay);
-        box(s, 0.024, 0.02, 0.006, x, 0.016, 0.394, M.bay);
-        led(s, x, 0.03, 0.398, leds, k % 5 === 3 ? M.ledAmber : M.ledGreen);
+        // Dos filas de puertos arriba y la luz debajo, dentro del frente del switch
+        box(s, 0.024, 0.016, 0.006, x, 0.02, 0.394, M.bay);
+        box(s, 0.024, 0.016, 0.006, x, 0.0, 0.394, M.bay);
+        led(s, x, -0.02, 0.398, leds, k % 5 === 3 ? M.ledAmber : M.ledGreen);
       }
       s.userData = { base: -0.02, amt: 0.03, delay: 0.3 };
       return s;
@@ -860,19 +862,14 @@
     function compactServer(s) {
       const leds = s.children.filter((c) => c.userData.led);
       if (leds.length) {
-        // Cada luz del servidor suma una gemela justo arriba: el doble de luces, cada una parpadeando por su cuenta
-        const inst = new THREE.InstancedMesh(geo(0.014, 0.014, 0.005), M.ledInst, leds.length * 2);
+        const inst = new THREE.InstancedMesh(geo(0.014, 0.014, 0.005), M.ledInst, leds.length);
         inst.frustumCulled = false;
-        let i = 0;
-        leds.forEach((m) => {
-          [0, 0.019].forEach((dy) => {
-            tmpM.makeTranslation(m.position.x, m.position.y + dy, m.position.z);
-            inst.setMatrixAt(i, tmpM);
-            const lit = dy ? Math.random() > 0.25 : m.material !== M.ledOff;
-            inst.setColorAt(i, lit ? m.userData.on.color : COL.off);
-            productLeds.push({ inst: inst, i: i, on: m.userData.on.color, lit: lit });
-            i++;
-          });
+        leds.forEach((m, i) => {
+          tmpM.makeTranslation(m.position.x, m.position.y, m.position.z);
+          inst.setMatrixAt(i, tmpM);
+          const lit = m.material !== M.ledOff;
+          inst.setColorAt(i, lit ? m.userData.on.color : COL.off);
+          productLeds.push({ inst: inst, i: i, on: m.userData.on.color, lit: lit });
           s.remove(m);
         });
         s.add(inst);
@@ -1177,7 +1174,7 @@
         genLeds.setColorAt(i, genOn[i] ? ledList[i].col : COL.off);
       }
       genLeds.instanceColor.needsUpdate = true;
-      for (let n = 0; n < 16; n++) {
+      for (let n = 0; n < 8; n++) {
         const l = productLeds[Math.floor(Math.random() * productLeds.length)];
         l.lit = !l.lit;
         l.inst.setColorAt(l.i, l.lit ? l.on : COL.off);
