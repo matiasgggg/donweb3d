@@ -384,7 +384,11 @@
     clearHash();
     if (scene3d) scene3d.inicio();
   }
-  document.getElementById('brandHome').addEventListener('click', volverAlInicio);
+  document.getElementById('brandHome').addEventListener('click', (e) => {
+    volverAlInicio();
+    // Con mouse o dedo no queda el logo "seleccionado"; con teclado se mantiene el foco para seguir navegando
+    if (e.detail > 0) e.currentTarget.blur();
+  });
 
   /* Tarjetas de abajo y racks se destacan entre sí: el cursor sobre una tarjeta ilumina su rack,
      y el cursor sobre un rack destaca su tarjeta. */
